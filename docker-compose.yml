@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  nodejs-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodejs-api-container_healthdata
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    networks:
+      - healthdata_default
+    environment:
+      DB_USER: 'postgres'
+      DB_PASSWORD: '0000'
+      DB_HOST: 'db'
+      DB_NAME: 'remote'
+      DB_PORT: '5432'
+
+  db:
+    image: postgres:latest
+    container_name: db-container-healthdata
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '0000'
+      POSTGRES_DB: remote
+    ports:
+      - "5432:5432"
+    networks:
+      - healthdata_default
+    volumes:
+      - healthdata_default:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  healthdata_default:
+    driver: bridge
+
+volumes:
+  healthdata_default:
