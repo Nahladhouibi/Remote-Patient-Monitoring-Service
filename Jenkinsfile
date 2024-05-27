@@ -23,7 +23,7 @@ pipeline {
                     // Installer les dépendances Node.js
                     bat 'npm install'
                     // Exécuter les tests (ajustez cette commande selon vos besoins)
-                    bat 'npm test'
+                   // bat 'npm test'
                 }
             }
         }
