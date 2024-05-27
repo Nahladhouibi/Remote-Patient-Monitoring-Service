@@ -20,16 +20,32 @@ const HealthDataSchema = {
         primaryKey: true,
         type: DataTypes.INTEGER
     },
+    patientID: {
+        type: DataTypes.STRING,  
+        allowNull: false,
+        field: 'patientID'
+    },
     device_type: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         field: 'device_type'
-    },
-    data: {
+    }, 
+    value: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'data'
-    }
+        field: 'value'
+    },
+     
+    doctor: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        field: 'doctor'
+    },
+    remark: {
+        allowNull: true,
+        type: DataTypes.STRING,
+        field: 'remark'
+    },
      
 }
 

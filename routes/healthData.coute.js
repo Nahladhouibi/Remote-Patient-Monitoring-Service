@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router(); 
-const healthDataController = require('../controllers/healthData.controller');
+const Controller = require('../controllers/healthData.controller');
+const authValidation = require('../middleware/auth');
 
-router
-    .get('/', healthDataController.get )
-    .get('/:id', healthDataController.getById )
-    .post('/', healthDataController.create )
-    .put('/:id', healthDataController.update )
-    .delete('/:id', healthDataController._delete );
+router.get('/getRemotePatientMonitoring/:id', Controller.getRemotePatientMonitoring)
+router.get('/getMyRemoteMonitoring', authValidation, Controller.getMyRemoteMonitoring)
+router.post('/', authValidation, Controller.create)
+router.put('/updadeRemark/:dataID', authValidation, Controller.updateRemark)
 
 module.exports = router;

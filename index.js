@@ -19,3 +19,5 @@ routerApi(app);
 app.listen(port,()=>{
     console.log("Port ==> ", port);
 });
+
+module.exports = app;

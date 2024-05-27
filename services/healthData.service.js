@@ -30,7 +30,38 @@ class HealthDataService {
       await model.destroy();
       return { deleted: true };
     }
+    async findPatientRemoteMonitoring(patientID) {
+      console.log("patientID",patientID);
+      const res = await models.HealthData.findAll({where:{patientID}});
+       return res;
+    }
+
+
+    async updateRemark(id,dataID,data){
   
+  console.log(id);
+  console.log(dataID);
+  console.log(data);
+    
+        const healthData = await models.HealthData.findByPk(dataID);
+        console.log(healthData.dataValues);
+        if (healthData) {
+           
+          healthData.dataValues.remark=data.remark
+         
+           
+          console.log(data);
+     const res=   await   models.HealthData.update({ remark: data.remark ,doctor:id}, {
+            where: {
+              id:  healthData.dataValues.id
+            }
+          })
+           
+          
+    }
+    console.log("res",res);
+    return res;     
+        }
   }
   
   module.exports = HealthDataService;
