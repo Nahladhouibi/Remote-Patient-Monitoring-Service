@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Construire l'image Docker avec élévation de privilèges
-                    bat 'runas /noprofile /user:Administrator "docker build -t nahladhouibi/monitoringpatient:%BUILD_ID% ."'
+                    bat 'docker build -t nahladhouibi/monitoringpatient:%BUILD_ID% .'
                 }
             }
         }
