@@ -101,7 +101,7 @@ const getRemotePatientMonitoring = async ( req, res ) => {
         const response = await Promise.all(exams.map(async (item) => {
             let obj;
             if(item.dataValues.doctor!=null){
-            const pro = await axios.get(`http://localhost:8000/security/api/healthcareProfessional/${item.dataValues.doctor}`);
+            const pro = await axios.get(`http://localhost:3020/security/api/healthcareProfessional/${item.dataValues.doctor}`);
             
             obj=   {
                 createdAt: item.dataValues.createdAt,

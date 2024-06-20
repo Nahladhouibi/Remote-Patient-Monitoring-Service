@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remote-deployment
+  namespace: remote-patient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remote
+  template:
+    metadata:
+      labels:
+        app: remote
+    spec:
+      containers:
+        - name: remote
+          image: nahladhouibi/remote-monitoring:latest
+          ports:
+            - containerPort: 3009
+          env:
+            - name: DB_HOST
+              value: postgres-service.remote-patient.svc.cluster.local
+            # Ajoutez d'autres variables d'environnement au besoin
+          envFrom:
+            - secretRef:
+                name: remote-secrets

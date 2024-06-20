@@ -1,2 +1,2 @@
-CREATE DATABASE IF NOT EXISTS remote;
-USE remote;
+CREATE DATABASE IF NOT EXISTS remoteMonotoring;
+USE remoteMonotoring;
