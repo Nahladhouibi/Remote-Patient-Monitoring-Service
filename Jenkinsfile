@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_PATH = "C:\\Programmes\\Docker\\cli-plugins"
         PATH = "${DOCKER_PATH}:${PATH}"
+        KUBECONFIG = "C:\\Program Files\\Jenkins\\.kube\\config"
         NODEJS_PATH = "C:\\Programmes (x86)\\nodejs"
         SONAR_SCANNER_HOME = "C:\\Program Files\\sonar-scanner-5.0.1.3006-windows"
     }
