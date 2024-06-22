@@ -1,5 +1,5 @@
 # Stage 1: Build stage with development dependencies
-FROM node:16 as build
+FROM node:20 as build
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -17,7 +17,7 @@ COPY . .
 RUN npm rebuild bcrypt --build-from-source
 
 # Stage 2: Final image with only Node.js runtime
-FROM node:16-alpine as final
+FROM node:20-alpine as final
 
 # Set working directory
 WORKDIR /usr/src/app
